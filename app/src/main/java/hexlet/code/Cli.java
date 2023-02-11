@@ -1,7 +1,7 @@
 package hexlet.code;
 import java.util.Scanner;
 public class Cli {
-    public static void main(String[] args) {
+    public static void run() {
         Scanner sc = new Scanner(System.in);
         System.out.println("May I have your name?");
         String name = sc.nextLine();
