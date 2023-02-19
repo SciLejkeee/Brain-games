@@ -3,17 +3,26 @@ import java.util.Scanner;
 
 
 public class App {
+    public static int GAME;
     public static void main(String[] args) {
-        System.out.println("Please enter the game number and press Enter." + "\n" + "1 - Greet" + "\n" + "2 - Even" + "\n" + "0 - Exit");
+        System.out.println("""
+                Please enter the game number and press Enter.
+                1 - Greet
+                2 - Even
+                3 - Calculator
+                4 - GCD
+                5 - Progression
+                6 - Prime
+                0 - Exit""");
         Scanner app = new Scanner(System.in);
-        var option = app.nextInt();
-        if(option == 0) {
+        GAME = app.nextInt();
+        if(GAME == 0) {
             System.exit(0);
-        } else {
-            System.out.println("Your choice:" + option + "\n");
         }
-        Cli.run();
-        Even.parity();
+        else {
+            Cli.run();
+            Engine.eng();
+        }
         app.close();
     }
 }

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Even {
     public static void parity() {
         Scanner even = new Scanner(System.in);
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");;
+        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         var i = 0;
         do {
             int number = (int) (Math.random() * 100);
@@ -16,7 +16,8 @@ public class Even {
                     i++;
                 }
                 else if (number % 2 == 0 && answer.equals("no")) {
-                    System.out.println("'no' is wrong answer ;(. Correct answer was 'yes'." + "\n" + "Let's try again, " + Cli.NAME + "!");
+                    System.out.println("'no' is wrong answer ;(. Correct answer was 'yes'." +
+                            "\n" + "Let's try again, " + Cli.NAME + "!");
                     System.exit(0);
                 }
                 else if (number % 2 != 0 && answer.equals("no")) {
@@ -24,7 +25,8 @@ public class Even {
                     i++;
                 }
                 else if (number % 2 != 0 && answer.equals("yes")) {
-                    System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'." + "\n" + "Let's try again, " + Cli.NAME + "!");
+                    System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'." +
+                            "\n" + "Let's try again, " + Cli.NAME + "!");
                     System.exit(0);
                 }
                 else {
