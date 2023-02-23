@@ -4,39 +4,41 @@ import java.util.Scanner;
 
 public class Calculator {
     public static void calc() {
-        Scanner calculator = new Scanner(System.in);
-        System.out.println("What is the result of the expression?");
-        var i = 0;
-        do {
-            int num1 = (int) (Math.random() * 100);
-            int num2 = (int) (Math.random() * 100);
-            System.out.println("Question: " + num1 + "+" + num2);
-            int calc = calculator.nextInt();
-            if(num1 + num2 == calc) {
-                System.out.println("Your answer: " + calc + "\n" + "Correct!");
+        Scanner sc = new Scanner(System.in);
+        String[] operands = {"+", "-", "*", "/"};
+        int count = 0;
+        for(int i = 0; i < 3; i++) {
+            int a = (int) (Math.random() * 100);
+            int b = (int) (Math.random() * 100);
+            int index = (int) (Math.random() * 4);
+            String operand = operands[index];
+            System.out.println("What is the result of the expression?" + "\n" + "Question: " + a + operand + b);
+            int result;
+            switch (operand) {
+                case "+" -> result = a + b;
+                case "-" -> result = a - b;
+                case "*" -> result = a * b;
+                default -> result = a / b;
             }
-            else {
-                System.out.println(calc + "is wrong answer ;(. Correct answer was" + num1 + num2 + ".");
-            }
-                System.out.println("Question: ");
-                System.out.println(num1 + "-" + num2);
-                if (num1 - num2 == calc) {
-                    System.out.println("Your answer: " + calc + "\n" + "Correct!");
-                } else {
-                    System.out.println(calc + "is wrong answer ;(. Correct answer was" + (num1 - num2) + ".");
-                }
-            System.out.println("Question: " + num1 + "*" + num2);
-            if(num1 * num2 == calc) {
-                System.out.println("Your answer: " + calc + "\n" + "Correct!");
-            }
-            else {
-                System.out.println(calc + "is wrong answer ;(. Correct answer was" + num1 * num2 + ".");
-            }
-            while (i < 3) ;
-            if (i == 3) {
-                System.out.println("Congratulations, " + Cli.NAME + "!");
+            int answer = sc.nextInt();
+            if (result == answer) {
+                count++;
+                System.out.println("Your answer: " + answer + "\n" + "Correct!");
+            } else {
+                System.out.println("Your answer: " + answer + "\n" + "'" + answer + "'" +
+                        "is wrong answer ;(. Correct answer was " + "'" + result + "'" + "."
+                        + "\n" + "Let's try again, " + Cli.NAME + "!");
                 System.exit(0);
             }
-        }while (i < 3);
+        }
+        if(count == 3) {
+            System.out.println("Congratulations! " + Cli.NAME);
+            System.exit(0);
+        }
+        else {
+            System.out.println("Try again!" + Cli.NAME);
+            System.exit(0);
+        }
     }
 }
+
