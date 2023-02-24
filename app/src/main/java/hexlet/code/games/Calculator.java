@@ -30,7 +30,7 @@ public class Calculator {
                 System.out.println("Your answer: " + answer + "\n" + "'" + answer + "'" +
                         "is wrong answer ;(. Correct answer was " + "'" + result + "'" + "."
                         + "\n" + "Let's try again, " + Cli.NAME + "!");
-                System.exit(0);
+                break;
             }
         }
         if(count == 3) {
