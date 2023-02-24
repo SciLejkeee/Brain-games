@@ -5,7 +5,10 @@
 asciinema-urls:
 
 Even:
-https://asciinema.org/~SciLe
+https://asciinema.org/a/hWpYaD0ZKKOxSdSFLhod6Oc9Z
 
 Calculator:
 https://asciinema.org/a/FA8yVW1HD4CC6EnpbbcylC9wH
+
+GCD:
+https://asciinema.org/a/sDr6HDgTRFZ3UOC2AF5PZiw9k

@@ -1,5 +1,9 @@
 package hexlet.code;
 
+import hexlet.code.games.Calculator;
+import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
+
 import static hexlet.code.App.GAME;
 
 public class Engine {
@@ -16,6 +20,10 @@ public class Engine {
             case 3:
                 System.out.println("Your choice:" + GAME + "\n");
                 Calculator.calc();
+                break;
+            case 4:
+                System.out.println("Your choice:" + GAME + "\n");
+                GCD.gcd();
                 break;
         }
     }

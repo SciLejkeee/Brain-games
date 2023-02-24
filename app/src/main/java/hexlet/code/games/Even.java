@@ -1,4 +1,6 @@
-package hexlet.code;
+package hexlet.code.games;
+
+import hexlet.code.Cli;
 
 import java.util.Scanner;
 
@@ -27,11 +29,11 @@ public class Even {
                 else if (number % 2 != 0 && answer.equals("yes")) {
                     System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'." +
                             "\n" + "Let's try again, " + Cli.NAME + "!");
-                    System.exit(0);
+                    break;
                 }
                 else {
                     System.out.println(answer + " is wrong answer ;(.");
-                    System.exit(0);
+                    break;
                 }
             } while (i < 3);
                 if (i == 3) {
