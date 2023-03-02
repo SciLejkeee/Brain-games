@@ -3,6 +3,7 @@ package hexlet.code;
 import hexlet.code.games.Calculator;
 import hexlet.code.games.Even;
 import hexlet.code.games.GCD;
+import hexlet.code.games.Progression;
 
 import static hexlet.code.App.GAME;
 
@@ -24,6 +25,10 @@ public class Engine {
             case 4 -> {
                 System.out.println("Your choice:" + GAME + "\n");
                 GCD.gcd();
+            }
+            case 5 -> {
+                System.out.println("Your choice:" + GAME + "\n");
+                Progression.progression();
             }
         }
     }

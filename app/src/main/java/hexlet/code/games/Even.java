@@ -35,10 +35,11 @@ public class Even {
                     System.out.println(answer + " is wrong answer ;(.");
                     break;
                 }
-            } while (i < 3);
+            }
+                while (i < 3);
                 if (i == 3) {
                     System.out.println("Congratulations, " + Cli.NAME + "!");
                     System.exit(0);
-        }
+                }
     }
 }
