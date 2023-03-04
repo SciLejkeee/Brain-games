@@ -1,9 +1,6 @@
 package hexlet.code;
 
-import hexlet.code.games.Calculator;
-import hexlet.code.games.Even;
-import hexlet.code.games.GCD;
-import hexlet.code.games.Progression;
+import hexlet.code.games.*;
 
 import static hexlet.code.App.GAME;
 
@@ -29,6 +26,10 @@ public class Engine {
             case 5 -> {
                 System.out.println("Your choice:" + GAME + "\n");
                 Progression.progression();
+            }
+            case 6 -> {
+                System.out.println("Your choice:" + GAME + "\n");
+                Prime.prime();
             }
         }
     }
