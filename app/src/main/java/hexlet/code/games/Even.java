@@ -1,40 +1,21 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
-
-import java.util.Scanner;
+import hexlet.code.Engine;
 
 public class Even {
+    public static final String QUESTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
     public static void parity() {
-        Scanner even = new Scanner(System.in);
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        int i;
-        for (i = 0; i < 3; i++) {
-            int number = (int) (Math.random() * 100);
-            System.out.println("Question: " + number);
-            String answer = even.nextLine();
-            if (number % 2 == 0 && answer.equals("yes")) {
-                System.out.println("Correct!");
-                i++;
-            } else if (number % 2 == 0 && answer.equals("no")) {
-                System.out.println("'no' is wrong answer ;(. Correct answer was 'yes'." +
-                        "\n" + "Let's try again, " + Cli.NAME + "!");
-                break;
-            } else if (number % 2 != 0 && answer.equals("no")) {
-                System.out.println("Correct!");
-                i++;
-            } else if (number % 2 != 0 && answer.equals("yes")) {
-                System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'." +
-                        "\n" + "Let's try again, " + Cli.NAME + "!");
-                break;
-            } else {
-                System.out.println(answer + " is wrong answer ;(.");
-                break;
-            }
-            if (i == 3) {
-                System.out.println("Congratulations, " + Cli.NAME + "!");
-                System.exit(0);
-            }
+        Engine.gameEngine(gameLogic(), QUESTION);
+    }
+
+    private static String[][] gameLogic() {
+        String[][] data = new String[Engine.ROUND_COUNT][Engine.ANSWER_VARIANTS];
+        for(int i = 0; i < Engine.ROUND_COUNT; i++) {
+            int randomNumber = Engine.getRandom(Engine.RANDOM_MULTIPLICATION);
+            data[i][0] = Integer.toString(randomNumber);
+            data[i][1] = randomNumber % 2 == 0 ? "yes" : "no";
         }
+        return data;
+
     }
 }

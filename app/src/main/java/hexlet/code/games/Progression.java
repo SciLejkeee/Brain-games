@@ -1,46 +1,34 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
-
-import java.util.Scanner;
-
-import static java.lang.Integer.parseInt;
+import hexlet.code.Engine;
 
 public class Progression {
+
+    private static final String QUESTION = "What number is missing in the progression?";
+    private static final int ARR_LENGTH = 10;
     public static void progression() {
-        Scanner progression = new Scanner(System.in);
-        int a;
-        System.out.println("What number is missing in the progression?");
-        for (a = 0; a < 3; a++) {
-            String[] arr = new String[5];
-            int firstNum = (int) (Math.random() * 100);
-            int step = (int) (Math.random() * 100);
-            arr[0] = String.valueOf(firstNum);
-            for (int i = 1; i < arr.length; i++) {
-                arr[i] = String.valueOf(parseInt(arr[i - 1]) + step);
-            }
-            int randomIndex = (int) (Math.random() * arr.length);
-            int answer = parseInt(arr[randomIndex]);
-            arr[randomIndex] = "..";
-            StringBuilder question = new StringBuilder();
-            for (String s : arr) {
-                question.append(" ").append(s).append(" ");
-            }
-            System.out.println("Question: " + question);
-            int answerScanner = progression.nextInt();
-            if (answerScanner == answer) {
-                System.out.println("Your answer: " + answerScanner + "\n" + "Correct!");
-                a++;
-            } else {
-                System.out.println("Your answer: " + answerScanner + "\n" + "'" + answerScanner + "'" +
-                        "is wrong answer ;(. Correct answer was " + "'" + answer + "'" + "."
-                        + "\n" + "Let's try again, " + Cli.NAME + "!");
-                break;
-            }
-            if (a == 3) {
-                System.out.println("Congratulations, " + Cli.NAME + "!");
-                System.exit(0);
-            }
+        Engine.gameEngine(gameLogic(), QUESTION);
+    }
+
+
+    private static String[][] gameLogic() {
+        String[][] data = new String[Engine.ROUND_COUNT][Engine.ANSWER_VARIANTS];
+        for (int i = 0; i < Engine.ROUND_COUNT; i++) {
+            String[] progression = new String[ARR_LENGTH];
+            int progressionStep = Engine.getRandom(Engine.RANDOM_MULTIPLICATION);
+            int randomIndex = Engine.getRandom(progression.length - 1);
+            progressionLogic(progression,progressionStep);
+            data[i][1] = progression[randomIndex];
+            progression[randomIndex] = "..";
+            data[i][0] = String.join(" ", progression);
+        }
+        return data;
+    }
+
+    private static void progressionLogic(String[] progression, int progressionStep) {
+        progression[0] = Integer.toString(Engine.getRandom(Engine.RANDOM_MULTIPLICATION));
+        for(int j = 1; j < progression.length; j++) {
+            progression[j] = Integer.toString(Integer.parseInt(progression[j - 1]) + progressionStep);
         }
     }
 }

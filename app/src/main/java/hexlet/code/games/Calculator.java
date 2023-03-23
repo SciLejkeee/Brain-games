@@ -1,46 +1,40 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
-
-import java.util.Scanner;
+import hexlet.code.Engine;
 
 public class Calculator {
+
+    public static final String TASK_CALCULATOR = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    public static final String[] OPERANDS = {"+", "-", "*", "/"};
+
     public static void calc() {
-        Scanner sc = new Scanner(System.in);
-        String[] operands = {"+", "-", "*", "/"};
-        int count = 0;
-        for(int i = 0; i < 3; i++) {
-            int a = (int) (Math.random() * 100);
-            int b = (int) (Math.random() * 100);
-            int index = (int) (Math.random() * 4);
-            String operand = operands[index];
-            System.out.println("What is the result of the expression?" + "\n" + "Question: " + a + operand + b);
-            int result;
-            switch (operand) {
-                case "+" -> result = a + b;
-                case "-" -> result = a - b;
-                case "*" -> result = a * b;
-                default -> result = a / b;
-            }
-            int answer = sc.nextInt();
-            if (result == answer) {
-                count++;
-                System.out.println("Your answer: " + answer + "\n" + "Correct!");
-            } else {
-                System.out.println("Your answer: " + answer + "\n" + "'" + answer + "'" +
-                        "is wrong answer ;(. Correct answer was " + "'" + result + "'" + "."
-                        + "\n" + "Let's try again, " + Cli.NAME + "!");
-                break;
-            }
+        Engine.gameEngine(gameLogic(), TASK_CALCULATOR);
+    }
+
+    private static String[][] gameLogic() {
+        String[][] data = new String[Engine.ROUND_COUNT][Engine.ANSWER_VARIANTS];
+        for (int i = 0; i < Engine.ROUND_COUNT; i++) {
+            String getExpression = calcExpression();
+            data[i][0] = getExpression;
+            data[i][1] = Integer.toString(randomExpression(getExpression));
         }
-        if(count == 3) {
-            System.out.println("Congratulations! " + Cli.NAME);
-            System.exit(0);
-        }
-        else {
-            System.out.println("Try again!" + Cli.NAME);
-            System.exit(0);
-        }
+        return data;
+    }
+
+    private static String calcExpression() {
+        int num1 = Engine.getRandom(Engine.RANDOM_MULTIPLICATION);
+        int num2 = Engine.getRandom(Engine.RANDOM_MULTIPLICATION);
+        String operations = OPERANDS[Engine.getRandom(OPERANDS.length)];
+        return num1 + " " + operations + " " + num2;
+    }
+
+    private static int randomExpression(String getExpression) {
+        String[] randomOperand = getExpression.split(" ");
+        return switch (randomOperand[1]) {
+            case "+" -> Integer.parseInt(randomOperand[0]) + Integer.parseInt(randomOperand[2]);
+            case "-" -> Integer.parseInt(randomOperand[0]) - Integer.parseInt(randomOperand[2]);
+            case "*" -> Integer.parseInt(randomOperand[0]) * Integer.parseInt(randomOperand[2]);
+            default -> throw new RuntimeException("Invalid Operation");
+        };
     }
 }
-

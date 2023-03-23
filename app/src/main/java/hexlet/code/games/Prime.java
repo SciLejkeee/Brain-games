@@ -1,34 +1,32 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
+import hexlet.code.Engine;
 
 import java.math.BigInteger;
-import java.util.Scanner;
 
 public class Prime {
-    public static void prime() {
-        Scanner even = new Scanner(System.in);
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        int i;
-        for (i = 0; i < 3; i++) {
-            int number = (int) (Math.random() * 100);
-            System.out.println("Question: " + number);
-            String answer = even.nextLine();
-            BigInteger bigInteger = BigInteger.valueOf(number);
-            boolean isPrime = bigInteger.isProbablePrime((int) Math.log(number));
-            String correctAnswer = isPrime ? "yes" : "no";
-            if (correctAnswer.equals(answer)) {
-                System.out.println("Correct!");
-            } else {
-                System.out.println("'" + answer + "' is wrong answer ;(." + "Correct answer was " + "'"
-                        + correctAnswer + "'." +
-                        "\n" + "Let's try again, " + Cli.NAME + "!");
-                return;
-            }
-        }
-        System.out.println("Congratulations, " + Cli.NAME + "!");
-        System.exit(0);
 
+    private static final String QUESTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    public static void prime() {
+        Engine.gameEngine(gameLogic(), QUESTION);
+    }
+
+    private static String[][] gameLogic() {
+        String[][] data = new String[Engine.ROUND_COUNT][Engine.ANSWER_VARIANTS];
+        for(int i = 0; i < Engine.ROUND_COUNT; i++) {
+            int randomNumber = Engine.getRandom(Engine.RANDOM_MULTIPLICATION);
+            String correctAnswer = isPrime(randomNumber);
+            data[i][0] = Integer.toString(randomNumber);
+            data[i][1] = correctAnswer;
+        }
+        return data;
+
+    }
+
+    private static String isPrime(int number) {
+        BigInteger bigInteger = BigInteger.valueOf(number);
+        boolean isPrime = bigInteger.isProbablePrime((int) Math.log(number));
+        return isPrime ? "yes" : "no";
     }
 }
 

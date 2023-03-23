@@ -1,39 +1,33 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
-
-import java.util.Scanner;
+import hexlet.code.Engine;
 
 public class GCD {
+    public static final String QUESTION = "Find the greatest common divisor of given numbers.";
+
     public static void gcd() {
-        Scanner gcd = new Scanner(System.in);
-        System.out.println("Find the greatest common divisor of given numbers.");
-        int i;
-        for (i = 0; i < 3; i++) {
-            int a = (int) (Math.random() * 100);
-            int b = (int) (Math.random() * 100);
-            System.out.println("Question: " + a + " " + b);
-            int answer = gcd.nextInt();
-            int count = Math.min(a, b);
+        Engine.gameEngine(gameLogic(), QUESTION);
+    }
+
+    private static String[][] gameLogic() {
+        String[][] data = new String[Engine.ROUND_COUNT][Engine.ANSWER_VARIANTS];
+        for (int i = 0; i < Engine.ROUND_COUNT; i++) {
+            int num1 = Engine.getRandom(Engine.RANDOM_MULTIPLICATION);
+            int num2 = Engine.getRandom(Engine.RANDOM_MULTIPLICATION);
+            data[i][0] = num1 + " " + num2;
+            data[i][1] = Integer.toString(greatestNumber(num1, num2));
+        }
+        return data;
+    }
+
+    private static int greatestNumber(int num1, int num2) {
+            int count = Math.min(num1, num2);
             for (int n = count; n >= 1; n--) {
-                if (a % n == 0 && b % n == 0) {
+                if (num1 % n == 0 && num2 % n == 0) {
                     count = n;
                     break;
                 }
             }
-            if (answer == count) {
-                System.out.println("Your answer: " + answer + "\n" + "Correct!");
-                i++;
-            } else {
-                System.out.println("Your answer: " + answer + "\n" + "'" + answer + "'" +
-                        "is wrong answer ;(. Correct answer was " + "'" + count + "'" + "."
-                        + "\n" + "Let's try again, " + Cli.NAME + "!");
-                break;
-            }
-            if (i == 3) {
-                System.out.println("Congratulations, " + Cli.NAME + "!");
-                System.exit(0);
-            }
-        }
+        return count;
     }
-}
+    }
