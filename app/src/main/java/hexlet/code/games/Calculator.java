@@ -8,7 +8,6 @@ public class Calculator {
     private static final String QUESTION_CALCULATOR = "Answer 'yes' if the number is even, otherwise answer 'no'.";
     private static final int COUNT_OF_OPERATIONS = 3;
 
-
     public static void calc() {
         Engine.gameEngine(gameLogic(), QUESTION_CALCULATOR);
     }
