@@ -5,8 +5,8 @@ import hexlet.code.RandomUtils;
 
 public class Calculator {
 
-    private static final String QUESTION_CALCULATOR = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-    private static final int COUNT_OF_OPERATIONS = 3;
+    private static final String QUESTION_CALCULATOR = "What is the result of the expression?";
+    private static final String[] OPERATORS = {"+", "-", "*"};
 
     public static void calc() {
         Engine.gameEngine(gameLogic(), QUESTION_CALCULATOR);
@@ -17,40 +17,24 @@ public class Calculator {
         for (int i = 0; i < Engine.ROUND_COUNT; i++) {
             int num1 = RandomUtils.generateNumber();
             int num2 = RandomUtils.generateNumber();
-            String getExpression = calcExpression();
-            data[i][0] = num1 + "" + calcExpression() + "" + num2;
-            data[i][1] = Calculator.calculate(num1, num2, getExpression);
+            String operator = calcExpression();
+            data[i][0] = num1 + " " + operator + " " + num2;
+            data[i][1] = Calculator.calculate(num1, num2, operator);
         }
         return data;
     }
 
     private static String calcExpression() {
-        int numberOfOperations = RandomUtils.generateNumber(0,COUNT_OF_OPERATIONS);
-        String mathematicalOperators = "";
-        switch (numberOfOperations) {
-            case 0:
-                mathematicalOperators = "+";
-                break;
-            case 1:
-                mathematicalOperators = "-";
-                break;
-            case 2:
-                mathematicalOperators = "*";
-            default:
-                break;
-        }
-        return mathematicalOperators;
+        return OPERATORS[RandomUtils.generateNumber(0,2)];
     }
 
-    private static String calculate(int num1, int num2, String getExpression) {
+    private static String calculate(int num1, int num2, String operator) {
         var result = 0;
-        if(getExpression.equals("+")) {
+        if (operator.equals("+")) {
             result = num1 + num2;
-        }
-        else if(getExpression.equals("-")) {
+        } else if (operator.equals("-")) {
             result = num1 - num2;
-        }
-        else {
+        } else {
             result = num1 * num2;
         }
         return String.valueOf(result);
