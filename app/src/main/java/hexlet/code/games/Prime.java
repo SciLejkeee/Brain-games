@@ -3,7 +3,6 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.RandomUtils;
 
-import java.math.BigInteger;
 
 public class Prime {
 
@@ -24,8 +23,18 @@ public class Prime {
     }
 
     private static boolean isPrime(int correctAnswer) {
-        BigInteger bigInteger = BigInteger.valueOf(correctAnswer);
-        return bigInteger.isProbablePrime((int) Math.log(correctAnswer));
+        boolean isPrime = true;
+        if (correctAnswer <= 1) {
+            isPrime = false;
+        } else {
+            for (int i = 2; i <= correctAnswer / 2; i++) {
+                if (correctAnswer % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+        }
+        return isPrime;
     }
 }
 
