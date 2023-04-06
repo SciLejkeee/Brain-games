@@ -15,7 +15,7 @@ public class Prime {
     private static String[][] gameLogic() {
         String[][] data = new String[Engine.ROUND_COUNT][Engine.ANSWER_VARIANTS];
         for(int i = 0; i < Engine.ROUND_COUNT; i++) {
-            int randomNumber = RandomUtils.generateNumber();
+            int randomNumber = RandomUtils.generateNumber(1);
             data[i][0] = String.valueOf(randomNumber);
             data[i][1] = isPrime(randomNumber) ? "yes" : "no";
         }
