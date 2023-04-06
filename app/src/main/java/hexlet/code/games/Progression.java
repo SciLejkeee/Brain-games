@@ -9,6 +9,7 @@ public class Progression {
     private static final int MAX_PROGRESSION_LENGTH = 10;
     private static final int MIN_PROGRESSION_LENGTH = 5;
     private static final int MAX_LENGTH_PROGRESSION = 4;
+
     public static void progression() {
         Engine.gameEngine(gameLogic(), QUESTION_PROGRESSION);
     }
@@ -20,8 +21,8 @@ public class Progression {
             int numMinOfProgression = RandomUtils.generateNumber();
             int progressionLength = RandomUtils.generateNumber(MIN_PROGRESSION_LENGTH, MAX_PROGRESSION_LENGTH);
             int step = RandomUtils.generateNumber(1, MAX_LENGTH_PROGRESSION);
-            int randomIndex = RandomUtils.generateNumber(0,progressionLength - 1);
-            String[] progressionLine = progressionLogic(numMinOfProgression,step,progressionLength);
+            int randomIndex = RandomUtils.generateNumber(0, progressionLength - 1);
+            String[] progressionLine = progressionLogic(numMinOfProgression, step, progressionLength);
             data[i][1] = progressionLine[randomIndex];
             progressionLine[randomIndex] = "..";
             data[i][0] = String.join(" ", progressionLine);
@@ -30,12 +31,12 @@ public class Progression {
     }
 
     private static String[] progressionLogic(int first, int step, int progressionLength) {
-            String[] progression = new String[progressionLength];
+        String[] progression = new String[progressionLength];
 
-            for (int i = 0; i < progressionLength; i += 1) {
-                progression[i] = Integer.toString(first + i * step);
-            }
+        for (int i = 0; i < progressionLength; i += 1) {
+            progression[i] = Integer.toString(first + i * step);
+        }
 
-            return progression;
+        return progression;
     }
 }

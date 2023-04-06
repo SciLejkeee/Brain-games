@@ -25,7 +25,7 @@ public class Calculator {
     }
 
     private static String calcExpression() {
-        return OPERATORS[RandomUtils.generateNumber(0,2)];
+        return OPERATORS[RandomUtils.generateNumber(0, 2)];
     }
 
     private static String calculate(int num1, int num2, String operator) {

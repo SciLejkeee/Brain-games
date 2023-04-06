@@ -11,7 +11,7 @@ public class RandomUtils {
     }
 
     public static int generateNumber(int min) {
-        return org.apache.commons.lang3.RandomUtils.nextInt(min,MAX_RANDOM_NUMBER);
+        return org.apache.commons.lang3.RandomUtils.nextInt(min, MAX_RANDOM_NUMBER);
     }
 
     public static int generateNumber() {
