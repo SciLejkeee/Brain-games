@@ -13,8 +13,8 @@ public class GCD {
     private static String[][] gameLogic() {
         String[][] data = new String[Engine.ROUND_COUNT][Engine.ANSWER_VARIANTS];
         for (int i = 0; i < Engine.ROUND_COUNT; i++) {
-            int num1 = RandomUtils.generateNumber();
-            int num2 = RandomUtils.generateNumber();
+            int num1 = RandomUtils.generateNumber(1);
+            int num2 = RandomUtils.generateNumber(1);
             data[i][0] = num1 + " " + num2;
             data[i][1] = Integer.toString(greatestNumber(num1, num2));
         }
