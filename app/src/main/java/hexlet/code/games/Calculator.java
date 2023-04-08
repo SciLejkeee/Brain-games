@@ -33,11 +33,17 @@ public class Calculator {
     private static String calculate(int num1, int num2, String operator) {
         var result = 0;
         switch (operator) {
-            case "+" -> result = num1 + num2;
-            case "-" -> result = num1 - num2;
-            case "*" -> result = num1 * num2;
-            default -> {
-            }
+            case "+":
+                result = num1 + num2;
+                break;
+            case "-":
+                result = num1 - num2;
+                break;
+            case "*":
+                result = num1 * num2;
+                break;
+            default:
+                break;
         }
         return String.valueOf(result);
     }
