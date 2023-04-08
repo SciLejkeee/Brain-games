@@ -24,13 +24,13 @@ public class GCD {
     }
 
     private static int greatestNumber(int num1, int num2) {
-            int count = Math.min(num1, num2);
-            for (int n = count; n >= 1; n--) {
-                if (num1 % n == 0 && num2 % n == 0) {
-                    count = n;
-                    break;
-                }
+        int count = Math.min(num1, num2);
+        for (int n = count; n >= 1; n--) {
+            if (num1 % n == 0 && num2 % n == 0) {
+                count = n;
+                break;
             }
+        }
         return count;
     }
-    }
+}
