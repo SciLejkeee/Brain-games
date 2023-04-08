@@ -7,6 +7,8 @@ import hexlet.code.RandomUtils;
 public class Prime {
 
     private static final String QUESTION_PRIME = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    private static final int MAX_RANDOM_NUMBERS = 20;
+    private static final int MIN_RANDOM_NUMBERS = 1;
 
     public static void prime() {
         Engine.gameEngine(gameLogic(), QUESTION_PRIME);
@@ -15,7 +17,7 @@ public class Prime {
     private static String[][] gameLogic() {
         String[][] data = new String[Engine.ROUND_COUNT][Engine.ANSWER_VARIANTS];
         for (int i = 0; i < Engine.ROUND_COUNT; i++) {
-            int randomNumber = RandomUtils.generateNumber(1);
+            int randomNumber = RandomUtils.generateNumber(MIN_RANDOM_NUMBERS, MAX_RANDOM_NUMBERS);
             data[i][0] = String.valueOf(randomNumber);
             data[i][1] = isPrime(randomNumber) ? "yes" : "no";
         }

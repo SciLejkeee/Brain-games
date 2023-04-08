@@ -6,6 +6,8 @@ import hexlet.code.RandomUtils;
 public class Progression {
 
     private static final String QUESTION_PROGRESSION = "What number is missing in the progression?";
+    private static final int MAX_RANDOM_NUMBERS = 20;
+    private static final int MIN_RANDOM_NUMBERS = 0;
     private static final int MAX_PROGRESSION_LENGTH = 10;
     private static final int MIN_PROGRESSION_LENGTH = 5;
     private static final int MAX_LENGTH_PROGRESSION = 4;
@@ -18,7 +20,7 @@ public class Progression {
     private static String[][] gameLogic() {
         String[][] data = new String[Engine.ROUND_COUNT][Engine.ANSWER_VARIANTS];
         for (int i = 0; i < Engine.ROUND_COUNT; i++) {
-            int numMinOfProgression = RandomUtils.generateNumber();
+            int numMinOfProgression = RandomUtils.generateNumber(MIN_RANDOM_NUMBERS, MAX_RANDOM_NUMBERS);
             int progressionLength = RandomUtils.generateNumber(MIN_PROGRESSION_LENGTH, MAX_PROGRESSION_LENGTH);
             int step = RandomUtils.generateNumber(1, MAX_LENGTH_PROGRESSION);
             int randomIndex = RandomUtils.generateNumber(0, progressionLength - 1);
